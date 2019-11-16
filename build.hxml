@@ -1,4 +1,8 @@
--cp src
+-cp src/main/haxe
+-cp src/test/haxe
+
+-lib stx
+
 -D analyzer-optimize
 -main Main
 --interp
