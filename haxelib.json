@@ -13,10 +13,10 @@
     "version": "0.0.1",
     "url": "",
     "dependencies": {
-        "tink_core": "",
-        "stx_core": "",
-        "stx_kleene": "",
-        "stx_ds": "",
+        "tink_core" : "",
+        "stx_pico"  : "",
+        "stx_nano"  : "",
+        "stx_ds"    : "",
         "stx_assert": ""
     },
     "classPath": "src/main/haxe"
