@@ -1,4 +1,4 @@
-package stx.query.range;
+package stx.query;
 
 enum QRangeSum{
   At(idx:Int);

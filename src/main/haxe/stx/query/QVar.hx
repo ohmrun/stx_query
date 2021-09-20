@@ -53,7 +53,7 @@ abstract QVar(QVarDef) from QVarDef to QVarDef{
 	}
 	public function prj():QVarDef return this;
 	
-	public function has(that:QExpr,?sel,?op):QExpr								  return QHas(__.option(sel).defv(ANY),__.option(op).defv(EQ),QVal(this),that);
+
 	@:to public function toQExpr():QExpr{
 		return QVal(this);
 	}
@@ -65,11 +65,11 @@ class QVarLift{
 	static public function is_defined(self:QVar){
 		return self != QNil;
 	}
-	static public function q(obj:StdMap<String,QVar>):QVar{
-		return QDecl(
-				obj.keyValueIterator().toIter().map(
-					(obj) -> Field.create(obj.key,obj.value)
-				).toArray()
-			);
-	}
+	// static public function q(obj:StdMap<String,QVar>):QVar{
+	// 	return QDecl(
+	// 			obj.keyValueIterator().toIter().map(
+	// 				(obj) -> Field.create(obj.key,obj.value)
+	// 			).toArray()
+	// 		);
+	// }
 }

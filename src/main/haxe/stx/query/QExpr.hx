@@ -9,7 +9,7 @@ enum QExprSum{
   QSeq(lhs:QExpr,rhs:QExpr);
   QAlt(lhs:QExpr,rhs:QExpr);
 
-  QHas(dep:QSel,op:QBinop,lhs:QExpr,rhs:QExpr);
+  QHas(dep:QSelection,op:QBinop,lhs:QExpr,rhs:QExpr);
 }
 abstract QExpr(QExprSum) from QExprSum{
  static public var _(default,never) = QExprLift;
@@ -21,7 +21,6 @@ abstract QExpr(QExprSum) from QExprSum{
 
  @:op(A && B)	public function and(that:QExpr):QExpr						return QSeq(self,that);
  @:op(A || B)	public function or(that:QExpr):QExpr						return QAlt(self,that);
- public function has(that:QExpr,?sel,?op):QExpr								return QHas(__.option(sel).defv(ANY),__.option(op).defv(EQ),this,that);
 
  private var self(get,never):QExpr;
  private function get_self():QExpr return this;

@@ -1,0 +1,21 @@
+{
+  "build" : {
+    "-lib" : [
+      "stx_pico","stx_nano","stx_fn","stx_assert","stx_log",
+      "stx_asys", "stx_om","stx_db","stx_schema","stx_parse",
+      
+      "pml","hscript"
+    ],
+    "assertation.interp": {
+      "--interp" : true,
+      "-main"    : "stx.query.assertation.Test" 
+    },
+    "selection.interp": {
+      "--interp" : true,
+      "-main"    : "stx.query.selection.Test" 
+    }
+  },
+  "run" : {
+    
+  }
+}

@@ -9,7 +9,7 @@ enum QRExprDef{
 
 	QRSeq(l:QRExpr,r:QRExpr);
 	QRAlt(l:QRExpr,r:QRExpr);
-	QRHas(sel:QSel,op:QBinop,l:QExpr,r:QExpr);
+	QRHas(sel:QSelection,op:QBinop,l:QExpr,r:QExpr);
 	
 	QRNot(e:QRExpr);
 }

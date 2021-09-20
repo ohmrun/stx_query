@@ -3,6 +3,9 @@ package stx;
 
 typedef Module 					= stx.query.Module;
 
+typedef QAggPredSum 		= stx.query.QAggPred.QAggPredSum;
+typedef QAggPred 				= stx.query.QAggPred;
+
 typedef QueryFailureSum = stx.fail.QueryFailure.QueryFailureSum;
 typedef QueryFailure 		= stx.fail.QueryFailure;
 
@@ -18,8 +21,8 @@ typedef QBinop 				= stx.query.QBinop;
 typedef QAggSum 			= stx.query.QAgg.QAggSum;
 typedef QAgg 					= stx.query.QAgg.QAggSum;
 
-typedef QSelSum 			= stx.query.QSel.QSelSum;
-typedef QSel 					= stx.query.QSel;
+typedef QSelectionSum 			= stx.query.QSelection.QSelectionSum;
+typedef QSelection 					= stx.query.QSelection;
 
 typedef QUnopSum 			= stx.query.QUnop.QUnopSum;
 typedef QUnop 				= stx.query.QUnop;
