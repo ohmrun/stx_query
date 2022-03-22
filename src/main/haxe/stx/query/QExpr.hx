@@ -1,11 +1,14 @@
 package stx.query;
 
 enum QExprSum<T>{
+	QVal(v:T);
+  QRes(result:QResult);
+
 	QAnd(l:QExpr<T>,r:QExpr<T>);
 	QOr(l:QExpr<T>,r:QExpr<T>);
 	QNot(e:QExpr<T>);
 
-	QIn(of:T,sum:QFilter,e:QExpr<T>);
+	QIn(filter:QFilter,arg:T,sub_expr:QSubExpr<T>);  
 
 	QBinop(op:QBinop,l:T,r:T);
 	QUnop(op:QUnop,v:T);

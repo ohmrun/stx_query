@@ -1,6 +1,6 @@
 package stx.query;
 
 enum QFilter{
-	ALL;
-	ANY;
+	UNIVERSAL;
+	EXISTENTIAL;
 }
