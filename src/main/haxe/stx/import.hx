@@ -15,3 +15,5 @@ using   stx.Parse;
 using   stx.Query;
 using   stx.om.Spine;
 using   eu.ohmrun.Pml;
+using   stx.ds.XSet;
+using   stx.Show;

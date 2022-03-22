@@ -1,21 +1,16 @@
--cp src/main/haxe
--cp src/test/haxe
-
+-main stx.query.Test
 -lib stx_pico
 -lib stx_nano
 -lib stx_fn
 -lib stx_assert
 -lib stx_log
--lib stx_asys 
-
+-lib stx_asys
 -lib stx_om
 -lib stx_db
 -lib stx_schema
 -lib stx_parse
+-lib stx_test
+-lib stx_xset
 -lib pml
-
 -lib hscript
-
--D analyzer-optimize
--main Main
 --interp

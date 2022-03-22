@@ -1,18 +1,17 @@
 {
   "build" : {
+    "-D" : ["no-deprecation-warnings"],
     "-lib" : [
       "stx_pico","stx_nano","stx_fn","stx_assert","stx_log",
       "stx_asys", "stx_om","stx_db","stx_schema","stx_parse",
-      
+      "stx_test", "stx_xset","stx_show", 
       "pml","hscript"
     ],
-    "assertation.interp": {
-      "--interp" : true,
-      "-main"    : "stx.query.assertation.Test" 
-    },
-    "selection.interp": {
-      "--interp" : true,
-      "-main"    : "stx.query.selection.Test" 
+    "test" : {
+      "-main"    : "stx.query.Test",
+      "interp": {
+        "--interp" : true
+      }
     }
   },
   "run" : {
