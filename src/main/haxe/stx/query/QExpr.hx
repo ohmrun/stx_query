@@ -1,17 +1,14 @@
 package stx.query;
 
 enum QExprSum<T>{
-	QVal(v:T);
-  QRes(result:QResult);
-
 	QAnd(l:QExpr<T>,r:QExpr<T>);
 	QOr(l:QExpr<T>,r:QExpr<T>);
 	QNot(e:QExpr<T>);
 
 	QIn(filter:QFilter,sub_exprs:QSubExpr<T>);  
 
-	QBinop(op:QBinop,l:T,r:T);
-	QUnop(op:QUnop,v:T);
+	QBinop(op:QBinop,l:T);
+	QUnop(op:QUnop);
 }
 @:using(stx.query.QExpr.QExprLift)
 abstract QExpr<T>(QExprSum<T>) from QExprSum<T> to QExprSum<T>{
@@ -33,7 +30,7 @@ abstract QExpr<T>(QExprSum<T>) from QExprSum<T> to QExprSum<T>{
 	}
 }
 class QExprLift{
-	// static public function apply<T>(self:QExpr<T>,api:QueryApi<T>):Res<QResult,QueryFailure>{
+	// static public function apply<T>(self:QExpr<T>,val:T,api:QueryApi<T>):Res<QResult,QueryFailure>{
 	// 	final f = apply.bind(_,api);
 	// 	return switch(self){
 	// 		case QVal(v) 									: __.accept(QTrue);//TODO: is this right?

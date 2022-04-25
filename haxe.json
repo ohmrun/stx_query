@@ -7,6 +7,12 @@
       "stx_test", "stx_xset","stx_show", 
       "pml","hscript"
     ],
+    "unit" : {
+      "--macro" : [
+        "include('stx.query',true)",
+        "include('stx.assert',true)"
+      ]
+    },
     "test" : {
       "-main"    : "stx.query.Test",
       "interp": {

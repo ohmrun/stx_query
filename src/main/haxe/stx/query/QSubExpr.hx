@@ -1,7 +1,7 @@
 package stx.query;
 
 enum QSubExprSum<T>{
-  QSQExpr(result:QExpr<T>);
+  //QSQExpr(result:QExpr<T>);
 
 	QSAnd(l:QSubExpr<T>,r:QSubExpr<T>);
 	QSOr(l:QSubExpr<T>,r:QSubExpr<T>);
