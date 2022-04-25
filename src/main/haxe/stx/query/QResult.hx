@@ -1,8 +1,9 @@
 package stx.query;
 
-enum QResult{
-  QTrue;
-  QFalse;
-  QUnknown;
-  QUnreachable;
-}
+typedef QResult = Bool;
+// enum QResult{
+//   QTrue;
+//   QFalse;
+//   QUnknown;
+// //  QUnreachable;
+// }

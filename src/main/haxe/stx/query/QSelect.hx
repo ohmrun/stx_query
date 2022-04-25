@@ -9,7 +9,7 @@ enum QSelectSum{
 }
 abstract QSelect(QSelectSum) from QSelectSum to QSelectSum{
   public function new(self) this = self;
-  static public function lift(self:QSelectSum):QSelect return new QSelect(self);
+  @:noUsing static public function lift(self:QSelectSum):QSelect return new QSelect(self);
 
   public function prj():QSelectSum return this;
   private var self(get,never):QSelect;

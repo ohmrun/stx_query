@@ -1,4 +1,4 @@
-package stx.query;
+package stx.logic;
 
 typedef QPredicateLetterDef<T> = {
   final ident     : T;
@@ -6,7 +6,7 @@ typedef QPredicateLetterDef<T> = {
 }
 abstract QPredicateLetter<T>(QPredicateLetterDef<T>) from QPredicateLetterDef<T> to QPredicateLetterDef<T>{
   public function new(self) this = self;
-  static public function lift<T>(self:QPredicateLetterDef<T>):QPredicateLetter<T> return new QPredicateLetter(self);
+  @:noUsing static public function lift<T>(self:QPredicateLetterDef<T>):QPredicateLetter<T> return new QPredicateLetter(self);
 
   public function prj():QPredicateLetterDef<T> return this;
   private var self(get,never):QPredicateLetter<T>;

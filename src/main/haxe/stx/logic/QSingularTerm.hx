@@ -1,14 +1,14 @@
-package stx.query;
+package stx.logic;
 
-typedef QSingleTermDef<T> = {
+typedef QSingularTermDef<T> = {
   final ident     : T;
   final subscript : QSubscript; 
 }
-abstract QSingleTerm<T>(QSingleTermDef<T>) from QSingleTermDef<T> to QSingleTermDef<T>{
+abstract QSingularTerm<T>(QSingularTermDef<T>) from QSingularTermDef<T> to QSingularTermDef<T>{
   public function new(self) this = self;
-  static public function lift<T>(self:QSingleTermDef<T>):QSingleTerm<T> return new QSingleTerm(self);
+  @:noUsing static public function lift<T>(self:QSingularTermDef<T>):QSingularTerm<T> return new QSingularTerm(self);
 
-  public function prj():QSingleTermDef<T> return this;
-  private var self(get,never):QSingleTerm<T>;
-  private function get_self():QSingleTerm<T> return lift(this);
+  public function prj():QSingularTermDef<T> return this;
+  private var self(get,never):QSingularTerm<T>;
+  private function get_self():QSingularTerm<T> return lift(this);
 }

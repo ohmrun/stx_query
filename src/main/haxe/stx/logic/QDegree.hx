@@ -1,3 +1,3 @@
-package stx.query;
+package stx.logic;
 
 typedef QDegree = UInt;

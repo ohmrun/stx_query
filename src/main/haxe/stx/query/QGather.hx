@@ -7,7 +7,7 @@ enum QGatherSum<T>{
 }
 abstract QGather<T>(QGatherSum<T>) from QGatherSum<T> to QGatherSum<T>{
   public function new(self) this = self;
-  static public function lift<T>(self:QGatherSum<T>):QGather<T> return new QGather(self);
+  @:noUsing static public function lift<T>(self:QGatherSum<T>):QGather<T> return new QGather(self);
 
   public function prj():QGatherSum<T> return this;
   private var self(get,never):QGather<T>;

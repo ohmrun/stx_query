@@ -1,8 +1,8 @@
-package stx.query;
+package stx.logic;
 
-enum StatementSum<T,P>{ 
-  QSSimple(letter:SimpleStatementLetter<T>);
-  QSSingular(pred:PredicateLetter<P>, args: Cluster<SingularTerm<T>>);
+enum QStatementSum<T,P>{ 
+  QSSimple(letter:QSimpleStatementLetter<T>);
+  QSSingular(pred:QPredicateLetter<P>, args: Cluster<QSingularTerm<T>>);
   QSConjunction(lhs:QStatement<T,P>, rhs:QStatement<T,P>);
   QSNegation(statement:QStatement<T,P>);
   QSDisjunction(lhs:QStatement<T,P>, rhs:QStatement<T,P>);
@@ -12,7 +12,7 @@ enum StatementSum<T,P>{
 }
 abstract QStatement<T,P>(QStatementSum<T,P>) from QStatementSum<T,P> to QStatementSum<T,P>{
   public function new(self) this = self;
-  static public function lift<T,P>(self:QStatementSum<T,P>):QStatement<T,P> return new QStatement(self);
+  @:noUsing static public function lift<T,P>(self:QStatementSum<T,P>):QStatement<T,P> return new QStatement(self);
 
   public function prj():QStatementSum<T,P> return this;
   private var self(get,never):QStatement<T,P>;

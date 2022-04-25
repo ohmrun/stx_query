@@ -1,4 +1,4 @@
-package stx.query;
+package stx.logic;
 
 typedef QVariableDef<T> = {
   final ident     : T;
@@ -6,7 +6,7 @@ typedef QVariableDef<T> = {
 }
 abstract QVariable<T>(QVariableDef<T>) from QVariableDef<T> to QVariableDef<T>{
   public function new(self) this = self;
-  static public function lift<T>(self:QVariableDef<T>):QVariable<T> return new QVariable(self);
+  @:noUsing static public function lift<T>(self:QVariableDef<T>):QVariable<T> return new QVariable(self);
 
   public function prj():QVariableDef<T> return this;
   private var self(get,never):QVariable<T>;
