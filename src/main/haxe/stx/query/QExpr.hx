@@ -1,6 +1,7 @@
 package stx.query;
 
 enum QExprSum<T>{
+	QVal(v:T);
 	QAnd(l:QExpr<T>,r:QExpr<T>);
 	QOr(l:QExpr<T>,r:QExpr<T>);
 	QNot(e:QExpr<T>);
@@ -28,6 +29,7 @@ abstract QExpr<T>(QExprSum<T>) from QExprSum<T> to QExprSum<T>{
 	public function or(that:QExpr<T>){
 		return lift(QOr(this,that));
 	}
+	
 }
 class QExprLift{
 	// static public function apply<T>(self:QExpr<T>,val:T,api:QueryApi<T>):Res<QResult,QueryFailure>{

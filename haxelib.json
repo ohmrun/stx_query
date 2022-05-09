@@ -18,7 +18,8 @@
         "stx_nano"      : "git:https://github.com/ohmrun/stx_nano.git",
         "stx_ds"        : "git:https://github.com/ohmrun/stx_ds.git",
         "stx_log"       : "git:https://github.com/ohmrun/stx_log.git",
-        "stx_assert"    : "git:https://github.com/ohmrun/stx_assert.git"
+        "stx_assert"    : "git:https://github.com/ohmrun/stx_assert.git",
+        "stx_om"        : "git:https://github.com/ohmrun/stx_om.git"
     },
     "classPath": "src/main/haxe"
 }
