@@ -1,6 +1,6 @@
 package stx.assert.ord;
 
-import stx.assert.eq.QUnop in TQUnop;
+import stx.query.QUnop in TQUnop;
 
 class QUnop extends OrdCls<TQUnop>{
   public function new(){}

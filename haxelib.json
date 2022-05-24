@@ -11,7 +11,7 @@
     ],
     "releasenote": "",
     "version": "0.0.1",
-    "url": "",
+    "url": "https://github.com/ohmrun/stx_query",
     "dependencies": {
         "tink_core"     : "git:https://github.com/haxetink/tink_core.git",
         "stx_pico"      : "git:https://github.com/ohmrun/stx_pico.git",

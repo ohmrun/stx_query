@@ -8,7 +8,7 @@ enum QSubExprSum<T>{
 	QSNot(e:QSubExpr<T>);
 
 	QSBinop(op:QBinop,l:T);
-	QSUnop(op:QUnop);
+	QSUnop(op:stx.query.QUnop);
 }
 @:using(stx.query.QSubExpr.QSubExprLift)
 abstract QSubExpr<T>(QSubExprSum<T>) from QSubExprSum<T> to QSubExprSum<T>{

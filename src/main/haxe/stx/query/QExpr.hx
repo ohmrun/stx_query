@@ -1,15 +1,15 @@
 package stx.query;
 
 enum QExprSum<T>{
-	QVal(v:T);
-	QAnd(l:QExpr<T>,r:QExpr<T>);
-	QOr(l:QExpr<T>,r:QExpr<T>);
-	QNot(e:QExpr<T>);
+	QEVal(v:T);
+	QEAnd(l:QExpr<T>,r:QExpr<T>);
+	QEOr(l:QExpr<T>,r:QExpr<T>);
+	QENot(e:QExpr<T>);
 
-	QIn(filter:QFilter,sub_exprs:QSubExpr<T>);  
+	QEIn(filter:QFilter,sub_exprs:QSubExpr<T>);  
 
-	QBinop(op:QBinop,l:T);
-	QUnop(op:QUnop);
+	QEBinop(op:QBinop,l:T);
+	QEUnop(op:QUnop);
 }
 @:using(stx.query.QExpr.QExprLift)
 abstract QExpr<T>(QExprSum<T>) from QExprSum<T> to QExprSum<T>{
@@ -23,11 +23,11 @@ abstract QExpr<T>(QExprSum<T>) from QExprSum<T> to QExprSum<T>{
 	
 	@:op(A && B)
 	public function and(that:QExpr<T>){
-		return lift(QAnd(this,that));
+		return lift(QEAnd(this,that));
 	}
 	@:op(A || B)
 	public function or(that:QExpr<T>){
-		return lift(QOr(this,that));
+		return lift(QEOr(this,that));
 	}
 	
 }
