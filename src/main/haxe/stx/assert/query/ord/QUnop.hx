@@ -1,4 +1,4 @@
-package stx.assert.ord;
+package stx.assert.query.ord;
 
 import stx.query.QUnop in TQUnop;
 

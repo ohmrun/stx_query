@@ -1,4 +1,4 @@
-package stx.assert.eq;
+package stx.assert.query.eq;
 
 import stx.query.QUnop in TQUnop;
 

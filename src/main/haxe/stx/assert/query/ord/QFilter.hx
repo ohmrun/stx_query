@@ -1,4 +1,4 @@
-package stx.assert.ord;
+package stx.assert.query.ord;
 
 import stx.query.QFilter in TQFilter;
 

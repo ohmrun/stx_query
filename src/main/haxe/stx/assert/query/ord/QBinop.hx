@@ -1,10 +1,10 @@
-package stx.assert.eq;
+package stx.assert.query.ord;
 
 import stx.query.QBinop in TQBinop;
 
-class QBinop extends EqCls<TQBinop>{
+class QBinop extends OrdCls<TQBinop>{
   public function new(){}
   public function comply(lhs:TQBinop,rhs:TQBinop){
-    return Eq.EnumValueIndex().comply(lhs,rhs);
+    return Ord.EnumValueIndex().comply(lhs,rhs);
   }
 }

@@ -1,4 +1,4 @@
-package stx.assert.eq;
+package stx.assert.query.eq;
 
 import stx.query.QSubExpr in TQSubExpr;
 
@@ -13,13 +13,13 @@ class QSubExpr<T> extends EqCls<TQSubExpr<T>>{
       case [QSOr(lI,rI),QSOr(lII,rII)]       : comply(lI,lII) && comply(rI,rII);
       case [QSNot(eI),QSNot(eII)]            : comply(eI,eII);
       case [QSBinop(oI,lI),QSBinop(oII,lII)] :
-        var eq = new stx.assert.eq.QBinop().comply(oI,oII);
+        var eq = new stx.assert.query.eq.QBinop().comply(oI,oII);
         if(eq.is_ok()){
           eq = delegate.comply(lI,lII);
         }
         eq;
       case [QSUnop(opI),QSUnop(opII)]        :
-        new stx.assert.eq.QUnop().comply(opI,opII);
+        new stx.assert.query.eq.QUnop().comply(opI,opII);
       default : Eq.EnumValueIndex().comply(lhs,rhs);
     }
   }

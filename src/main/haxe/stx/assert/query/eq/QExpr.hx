@@ -1,4 +1,4 @@
-package stx.assert.eq;
+package stx.assert.query.eq;
 
 import stx.query.QExpr in TQExpr;
 
@@ -14,19 +14,19 @@ class QExpr<T> extends EqCls<TQExpr<T>>{
       case [QEOr(lI,rI),QEOr(lII,rII)]       : comply(lI,lII) && comply(rI,rII);
       case [QENot(eI),QENot(eII)]            : comply(eI,eII);
       case [QEIn(filterI,sub_exprsI),QEIn(filterII,sub_exprsII)] : 
-        var eq = new stx.assert.eq.QFilter().comply(filterI,filterII);
+        var eq = new stx.assert.query.eq.QFilter().comply(filterI,filterII);
         if(eq.is_ok()){
-          eq = new stx.assert.eq.QSubExpr(inner).comply(sub_exprsI,sub_exprsII);
+          eq = new stx.assert.query.eq.QSubExpr(inner).comply(sub_exprsI,sub_exprsII);
         }
         eq;
       case [QEBinop(oI,lI),QEBinop(oII,lII)] :
-        var eq = new stx.assert.eq.QBinop().comply(oI,oII);
+        var eq = new stx.assert.query.eq.QBinop().comply(oI,oII);
         if(eq.is_ok()){
           eq = inner.comply(lI,lII);
         }
         eq;
       case [QEUnop(opI),QEUnop(opII)]        :
-        new stx.assert.eq.QUnop().comply(opI,opII);
+        new stx.assert.query.eq.QUnop().comply(opI,opII);
       default : Eq.EnumValueIndex().comply(lhs,rhs);
     }
   }
