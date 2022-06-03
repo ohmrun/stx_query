@@ -7,4 +7,6 @@ enum QBinop{
 	LTEQ;
 	GT;
 	GTEQ;
+
+	LIKE;
 }

@@ -3,12 +3,16 @@ package stx.query;
 enum QSubExprSum<T>{
   //QSQExpr(result:QExpr<T>);
 
-	QSAnd(l:QSubExpr<T>,r:QSubExpr<T>);
-	QSOr(l:QSubExpr<T>,r:QSubExpr<T>);
-	QSNot(e:QSubExpr<T>);
+	QSAnd(l:QExpr<T>,r:QExpr<T>);
+	QSOr(l:QExpr<T>,r:QExpr<T>);
+	QSNot(e:QExpr<T>);
+
+  QSOf(key:String,expr:QExpr<T>);
+  QSIn(filter:QFilter,sub_exprs:QSubExpr<T>);
 
 	QSBinop(op:QBinop,l:T);
 	QSUnop(op:stx.query.QUnop);
+  //QRange
 }
 @:using(stx.query.QSubExpr.QSubExprLift)
 abstract QSubExpr<T>(QSubExprSum<T>) from QSubExprSum<T> to QSubExprSum<T>{

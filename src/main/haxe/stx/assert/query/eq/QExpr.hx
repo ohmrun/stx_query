@@ -13,6 +13,12 @@ class QExpr<T> extends EqCls<TQExpr<T>>{
       case [QEAnd(lI,rI),QEAnd(lII,rII)]     : comply(lI,lII) && comply(rI,rII);
       case [QEOr(lI,rI),QEOr(lII,rII)]       : comply(lI,lII) && comply(rI,rII);
       case [QENot(eI),QENot(eII)]            : comply(eI,eII);
+      case [QEOf(keyI,restI),QEOf(keyII,restII)] : 
+        var eq = Eq.String().comply(keyI,keyII);
+        if(eq.is_ok()){
+          eq = comply(restI,restII);
+        }
+        eq;
       case [QEIn(filterI,sub_exprsI),QEIn(filterII,sub_exprsII)] : 
         var eq = new stx.assert.query.eq.QFilter().comply(filterI,filterII);
         if(eq.is_ok()){

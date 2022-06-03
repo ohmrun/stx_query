@@ -11,7 +11,7 @@
     "unit" : {
       "--macro" : [
         "include('stx.query',true)",
-        "include('stx.assert',true)"
+        "include('stx.assert.query',true)"
       ]
     },
     "test" : {
