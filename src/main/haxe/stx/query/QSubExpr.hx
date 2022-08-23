@@ -1,12 +1,5 @@
 package stx.query;
 
-//
-/**
-  typedef SubExprDef = {
-    final type      : QFilter;
-    final expr      : QExpr;
-  }
-**/
 enum QSubExprSum<T>{
   //QSQExpr(result:QExpr<T>);
 

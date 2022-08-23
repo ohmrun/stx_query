@@ -22,7 +22,7 @@ class QExpr<T> extends EqCls<TQExpr<T>>{
       case [QEIn(filterI,sub_exprsI),QEIn(filterII,sub_exprsII)] : 
         var eq = new stx.assert.query.eq.QFilter().comply(filterI,filterII);
         if(eq.is_ok()){
-          eq = new stx.assert.query.eq.QSubExpr(inner).comply(sub_exprsI,sub_exprsII);
+          eq = new stx.assert.query.eq.QExpr(inner).comply(sub_exprsI,sub_exprsII);
         }
         eq;
       case [QEBinop(oI,lI),QEBinop(oII,lII)] :

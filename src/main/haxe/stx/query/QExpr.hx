@@ -7,7 +7,7 @@ enum QExprSum<T>{
 	QENot(e:QExpr<T>);
 
 	QEOf(key:QSelect,expr:QExpr<T>);
-	QEIn(filter:QFilter,sub_exprs:QSubExpr<T>);
+	QEIn(filter:QFilter,sub_exprs:QExpr<T>);
 
 	QEBinop(op:QBinop,l:T);
 	QEUnop(op:QUnop);
