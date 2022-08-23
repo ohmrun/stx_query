@@ -12,7 +12,6 @@ typedef QSelect 				= stx.query.QSelect;
 typedef QSelectSum  		= stx.query.QSelect.QSelectSum;
 typedef QUnop 					= stx.query.QUnop;
 typedef QueryApi<T>     = stx.query.QueryApi<T>;
-
 class Query{
   static public function query(wildcard:Wildcard){
     return new stx.query.Module();

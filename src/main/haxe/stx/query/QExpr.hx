@@ -6,7 +6,7 @@ enum QExprSum<T>{
 	QEOr(l:QExpr<T>,r:QExpr<T>);
 	QENot(e:QExpr<T>);
 
-	QEOf(key:String,expr:QExpr<T>);
+	QEOf(key:QSelect,expr:QExpr<T>);
 	QEIn(filter:QFilter,sub_exprs:QSubExpr<T>);
 
 	QEBinop(op:QBinop,l:T);

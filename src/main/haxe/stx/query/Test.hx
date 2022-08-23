@@ -16,7 +16,7 @@ import stx.assert.query.ord.QUnop;
 
 class Test {
   static public function main(){
-    __.test(
+    __.test().run(
       [
         new QueryTest()
       ],

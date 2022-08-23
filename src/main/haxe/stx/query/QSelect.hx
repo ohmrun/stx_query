@@ -3,9 +3,9 @@ package stx.query;
 enum QSelectSum{
 	SField(key:String,?idx:Int);
 	SIndex(idx:Int);
-	SRange(start:Int,?finish:Int);
+	SRange(?start:Int,?finish:Int);
 
-	SWhich;
+	//SWhich;
 }
 abstract QSelect(QSelectSum) from QSelectSum to QSelectSum{
   public function new(self) this = self;
