@@ -1,6 +1,7 @@
 package stx.query;
 
 enum QExprSum<T>{
+	QEIdx;
 	QEVal(v:T);
 	QEAnd(l:QExpr<T>,r:QExpr<T>);
 	QEOr(l:QExpr<T>,r:QExpr<T>);
