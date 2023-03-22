@@ -5,7 +5,7 @@
     "-lib" : [
       "stx_pico","stx_nano","stx_fn","stx_assert","stx_log",
       "stx_asys", "stx_om","stx_schema","stx_parse",
-      "stx_test", "stx_xset","stx_show", 
+      "stx_ds_xset","stx_show", 
       "pml","hscript"
     ],
     "unit" : {
@@ -15,6 +15,8 @@
       ]
     },
     "test" : {
+      "-L"       : "stx_test",
+      "-cp"      : "src/main/haxe",
       "-main"    : "stx.query.Test",
       "interp": {
         "--interp" : true

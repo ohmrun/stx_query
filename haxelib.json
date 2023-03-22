@@ -17,9 +17,11 @@
         "stx_pico"      : "",
         "stx_nano"      : "",
         "stx_ds"        : "",
+        "stx_ds_xset"   : "",
         "stx_log"       : "",
         "stx_assert"    : "",
-        "stx_om"        : ""
+        "stx_om"        : "",
+        "stx_show"      : ""
     },
     "classPath": "src/main/haxe"
 }
