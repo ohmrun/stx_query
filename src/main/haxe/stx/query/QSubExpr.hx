@@ -12,7 +12,6 @@ enum QSubExprSum<T>{
 
 	QSBinop(op:QBinop,l:T);
 	QSUnop(op:stx.query.QUnop);
-  //QRange// TODO Do I need this?
 }
 @:using(stx.query.QSubExpr.QSubExprLift)
 abstract QSubExpr<T>(QSubExprSum<T>) from QSubExprSum<T> to QSubExprSum<T>{

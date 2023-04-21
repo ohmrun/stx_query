@@ -1,20 +1,20 @@
 package stx.query;
 
-enum QExprSum<T>{
+enum QExprSum<T = haxe.ds.Option<tink.core.Noise>>{
 	QEIdx;
 	QEVal(v:T);
 	QEAnd(l:QExpr<T>,r:QExpr<T>);
 	QEOr(l:QExpr<T>,r:QExpr<T>);
 	QENot(e:QExpr<T>);
 
-	QEOf(key:QSelect,expr:QExpr<T>);
+	QEOf(key:String,expr:QExpr<T>);
 	QEIn(filter:QFilter,sub_exprs:QExpr<T>);
 
 	QEBinop(op:QBinop,l:T);
 	QEUnop(op:QUnop);
 }
 @:using(stx.query.QExpr.QExprLift)
-abstract QExpr<T>(QExprSum<T>) from QExprSum<T> to QExprSum<T>{
+abstract QExpr<T = haxe.ds.Option<tink.core.Noise>>(QExprSum<T>) from QExprSum<T> to QExprSum<T>{
 	static public var _(default,never) = QExprLift;
 	public function new(self) this = self;
 	@:noUsing static public function lift<T>(self:QExprSum<T>):QExpr<T> return new QExpr(self);
@@ -22,7 +22,13 @@ abstract QExpr<T>(QExprSum<T>) from QExprSum<T> to QExprSum<T>{
 	public function prj():QExprSum<T> return this;
 	private var self(get,never):QExpr<T>;
 	private function get_self():QExpr<T> return lift(this);
-	
+
+	@:to static public function pure<T>(v:T)QExpr<T>{
+		return lift(QEVal(v));
+	}
+	@:noUsing static public function unit<T>():QExpr<T>{
+		return lift(QEIdx);
+	}
 	@:op(A && B)
 	public function and(that:QExpr<T>){
 		return lift(QEAnd(this,that));

@@ -16,10 +16,20 @@
     },
     "test" : {
       "-L"       : "stx_test",
-      "-cp"      : "src/main/haxe",
+      "-cp"      : "src/test/haxe",
       "-main"    : "stx.query.Test",
       "interp": {
         "--interp" : true
+      }
+    },
+    "feat"   : {
+      "-L"       : "stx_test",
+      "-cp"      : "src/test/haxe",
+      "object_query" : {
+        "-main" : "stx.query.term.object.Test",
+        "interp" : {
+          "--interp" : "true"
+        } 
       }
     }
   },

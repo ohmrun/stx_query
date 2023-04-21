@@ -1,9 +1,11 @@
 package stx.fail;
 
+
 enum QueryFailureSum{
+	E_Query(str:String);
 	E_Query_BareValue;
-	E_Query_NullAtIndex(e:QExpr<Dynamic>,i:Int);
-	E_Query_NullAtRecord(e:QExpr<Dynamic>,str:String);
+	E_Query_NullAtIndex(e:stx.query.QExpr<Dynamic>,i:Int);
+	E_Query_NullAtRecord(e:stx.query.QExpr<Dynamic>,str:String);
 }
 abstract QueryFailure(QueryFailureSum) from QueryFailureSum to QueryFailureSum{
 	public function new(self) this = self;
