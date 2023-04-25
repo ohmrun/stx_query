@@ -14,7 +14,7 @@ class QExpr<T> extends EqCls<TQExpr<T>>{
       case [QEOr(lI,rI),QEOr(lII,rII)]       : comply(lI,lII) && comply(rI,rII);
       case [QENot(eI),QENot(eII)]            : comply(eI,eII);
       case [QEOf(keyI,restI),QEOf(keyII,restII)] : 
-        var eq = new stx.assert.query.eq.QSelect().comply(keyI,keyII);
+        var eq = Eq.String().comply(keyI,keyII);
         if(eq.is_ok()){
           eq = comply(restI,restII);
         }

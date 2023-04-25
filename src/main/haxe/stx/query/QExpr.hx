@@ -23,7 +23,7 @@ abstract QExpr<T = haxe.ds.Option<tink.core.Noise>>(QExprSum<T>) from QExprSum<T
 	private var self(get,never):QExpr<T>;
 	private function get_self():QExpr<T> return lift(this);
 
-	@:to static public function pure<T>(v:T)QExpr<T>{
+	static public function pure<T>(v:T):QExpr<T>{
 		return lift(QEVal(v));
 	}
 	@:noUsing static public function unit<T>():QExpr<T>{
@@ -37,14 +37,20 @@ abstract QExpr<T = haxe.ds.Option<tink.core.Noise>>(QExprSum<T>) from QExprSum<T
 	public function or(that:QExpr<T>){
 		return lift(QEOr(this,that));
 	}
+	static public function Eq<T>(that:T){
+		return lift(QEBinop(EQ,that));
+	}
+	static public function Gt<T>(that:T){
+		return lift(QEBinop(GT,that));
+	}
 	
 }
 class QExprLift{
-	// static public function apply<T>(self:QExpr<T>,val:T,api:QueryApi<T>):Res<QResult,QueryFailure>{
+	// static public function apply<T>(self:QExpr<T>,val:T,api:QueryApi<T>):Upshot<QResult,QueryFailure>{
 	// 	final f = apply.bind(_,api);
 	// 	return switch(self){
 	// 		case QVal(v) 									: __.accept(QTrue);//TODO: is this right?
-	// 		case QRes(result)							: __.accept(result);
+	// 		case QUpshot(result)							: __.accept(result);
 		
 	// 		case QAnd(l,r) 								: f(l).zip(f(r)).map(__.decouple((l,r)-> l && r));
 	// 		case QOr(l,r)									: f(l).zip(f(r)).map(__.decouple((l,r)-> l || r));

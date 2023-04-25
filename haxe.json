@@ -15,6 +15,7 @@
       ]
     },
     "test" : {
+      "--connect" : "7070",
       "-L"       : "stx_test",
       "-cp"      : "src/test/haxe",
       "-main"    : "stx.query.Test",

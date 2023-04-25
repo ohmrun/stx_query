@@ -14,7 +14,7 @@ class QExpr<T> extends OrdCls<TQExpr<T>>{
       case [QEOr(lI,rI),QEOr(lII,rII)]       : comply(lI,lII) && comply(rI,rII);
       case [QENot(eI),QENot(eII)]                 : comply(eI,eII);
       case [QEOf(keyI,restI),QEOf(keyII,restII)]  : 
-        var ord = new stx.assert.query.ord.QSelect().comply(keyI,keyII);
+        var ord = Ord.String().comply(keyI,keyII);
         if(ord.is_ok()){
           ord = comply(restI,restII);
         }

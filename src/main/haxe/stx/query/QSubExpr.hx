@@ -25,7 +25,7 @@ abstract QSubExpr<T>(QSubExprSum<T>) from QSubExprSum<T> to QSubExprSum<T>{
 
 }
 class QSubExprLift{
-  // static public function comply<T>(self:QSubExpr<T>,api:QueryApi<T>,val:T):Res<Cluster<QResult>,QueryFailure>{
+  // static public function comply<T>(self:QSubExpr<T>,api:QueryApi<T>,val:T):Upshot<Cluster<QResult>,QueryFailure>{
   //   final f = comply.bind(_,api,val);
   //   return switch(self){
   //     case QSQExpr(qexpr)                     : qexpr.apply(api);

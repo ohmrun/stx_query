@@ -7,13 +7,13 @@ class ObjectQueryCls extends stx.assert.om.comparable.Spine<Noise>{
       Ord.Anon((x,y) -> NotLessThan)
     ));
   }
-  public function select(val:Spine,key:String):Res<Option<Spine>,QueryFailure>{
+  public function select(val:Spine,key:String):Upshot<Option<Spine>,QueryFailure>{
     return switch(val){
       case Collate(rec) : __.accept(rec.get(key).map(x -> x()));
       default           : __.reject(f -> f.of(E_Query('calling select on $val')));
     }
   }
-  public function filter(val:Cluster<Spine>,expr:QExpr<Spine>):Res<Cluster<Spine>,QueryFailure>{
+  public function filter(val:Cluster<Spine>,expr:QExpr<Spine>):Upshot<Cluster<Spine>,QueryFailure>{
     return __.accept(val.filter(
       x -> search(x,expr)
     ));
@@ -69,7 +69,7 @@ class ObjectQueryCls extends stx.assert.om.comparable.Spine<Noise>{
   }
   /**
    */
-  public function refine(val:Spine,expr:QExpr<Spine>):Res<Option<Spine>,QueryFailure>{
+  public function refine(val:Spine,expr:QExpr<Spine>):Upshot<Option<Spine>,QueryFailure>{
     return switch(expr){
       case QEIdx            : __.accept(__.option((val)));
       case QEVal(v)         : __.accept(__.option(v));
@@ -118,9 +118,9 @@ class ObjectQueryCls extends stx.assert.om.comparable.Spine<Noise>{
               );
             }
           );
-          Res.bind_fold(
+          Upshot.bind_fold(
             filtered,
-            function(n:Spine,m:Cluster<Spine>):Res<Cluster<Spine>,QueryFailure>{
+            function(n:Spine,m:Cluster<Spine>):Upshot<Cluster<Spine>,QueryFailure>{
               return refine(n,sub_exprs).map(
                 (opt:Option<Spine>) -> opt.fold(
                   m.snoc,

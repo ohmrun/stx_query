@@ -1,5 +1,6 @@
 package stx.query;
 
+using stx.Nano;
 using stx.Test;
 
 import stx.assert.query.eq.QBinop;
@@ -14,11 +15,13 @@ import stx.assert.query.ord.QFilter;
 import stx.assert.query.ord.QSubExpr;
 import stx.assert.query.ord.QUnop;
 
+import stx.query.test.*;
+
 class Test {
   static public function main(){
     __.test().run(
       [
-        new QueryTest()
+        new ObjectQueryTest()
       ],
       []
     );
