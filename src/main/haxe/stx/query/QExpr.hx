@@ -1,6 +1,6 @@
 package stx.query;
 
-enum QExprSum<T = haxe.ds.Option<tink.core.Noise>>{
+enum QExprSum<T = haxe.ds.Option<stx.pico.Nada>>{
 	QEIdx;
 	QEVal(v:T);
 	QEAnd(l:QExpr<T>,r:QExpr<T>);
@@ -14,7 +14,7 @@ enum QExprSum<T = haxe.ds.Option<tink.core.Noise>>{
 	QEUnop(op:QUnop);
 }
 @:using(stx.query.QExpr.QExprLift)
-abstract QExpr<T = haxe.ds.Option<tink.core.Noise>>(QExprSum<T>) from QExprSum<T> to QExprSum<T>{
+abstract QExpr<T = haxe.ds.Option<stx.pico.Nada>>(QExprSum<T>) from QExprSum<T> to QExprSum<T>{
 	static public var _(default,never) = QExprLift;
 	public function new(self) this = self;
 	@:noUsing static public function lift<T>(self:QExprSum<T>):QExpr<T> return new QExpr(self);

@@ -1,6 +1,6 @@
 package stx.query.term.object;
 
-class ObjectQueryCls extends stx.assert.om.comparable.Spine<Noise>{
+class ObjectQueryCls extends stx.assert.om.comparable.Spine<Nada>{
   public function new(){
     super(Comparable.Anon(
       Eq.Anon((x,y) -> AreEqual),
