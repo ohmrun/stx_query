@@ -4,28 +4,32 @@
     "-cp" : "src/main/haxe",
     "-lib" : [
       "stx_pico","stx_nano","stx_fn","stx_assert","stx_log",
-      "stx_asys", "stx_om","stx_schema","stx_parse",
+      "stx_asys", "stx_om","stx_schema","stx_parse","stx_ds",
       "stx_ds_xset","stx_show", 
-      "pml","hscript"
+      "pml","hscript","pml_om"
     ],
     "unit" : {
       "--macro" : [
         "include('stx.query',true)",
         "include('stx.assert.query',true)"
-      ]
+      ],
+      "interp" : {
+        "--interp" : true
+      }
     },
     "test" : {
-      "--connect" : "7070",
-      "-L"       : "stx_test",
-      "-cp"      : "src/test/haxe",
-      "-main"    : "stx.query.Test",
+      "--resource"  : ["asset/value.pml@value"],
+      "-L"          : ["stx_test","stx_show"],
+      "-cp"         : "src/test/haxe",
+      "-main"       : "stx.query.term.object.Test",
       "interp": {
         "--interp" : true
       }
     },
     "feat"   : {
-      "-L"       : "stx_test",
-      "-cp"      : "src/test/haxe",
+      "-D"  : "debug",
+      "-L"        : "stx_test",
+      "-cp"       : "src/test/haxe",
       "object_query" : {
         "-main" : "stx.query.term.object.Test",
         "interp" : {

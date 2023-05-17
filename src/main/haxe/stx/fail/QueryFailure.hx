@@ -2,6 +2,7 @@ package stx.fail;
 
 
 enum QueryFailureSum{
+	E_Query_ParseFailure(f:stx.fail.ParseFailure);
 	E_Query(str:String);
 	E_Query_BareValue;
 	E_Query_NullAtIndex(e:stx.query.QExpr<Dynamic>,i:Int);

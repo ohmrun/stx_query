@@ -1,0 +1,22 @@
+-main stx.query.term.object.Test
+-cp src/main/haxe
+-cp src/test/haxe
+-lib stx_pico
+-lib stx_nano
+-lib stx_fn
+-lib stx_assert
+-lib stx_log
+-lib stx_asys
+-lib stx_om
+-lib stx_schema
+-lib stx_parse
+-lib stx_ds_xset
+-lib stx_show
+-lib pml
+-lib hscript
+-lib pml_om
+-D no-deprecation-warnings
+--interp
+--resource asset/value.pml@value
+-L stx_test
+-L stx_show

@@ -1,7 +1,7 @@
 package stx.query;
 
 class Module extends Clazz{
-  public function that<T>(o:T):QExpr<T>{
-    return QEVal(o);
+  public function that(){
+    return new stx.query.QExpr.QExprCtr();
   }
 }
