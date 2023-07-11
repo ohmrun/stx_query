@@ -22,12 +22,6 @@ class QSubExpr<T> extends OrdCls<TQSubExpr<T>>{
           ord = comply(lI,lII);
         }
         ord;
-      case [QSOf(keyI,restI),QSOf(keyII,restII)]  : 
-        var ord = Ord.String().comply(keyI,keyII);
-        if(ord.is_ok()){
-          ord = expr_ord.comply(restI,restII);
-        }
-        ord;
       case [QSIn(filterI,exprI,sub_exprsI),QSIn(filterII,exprII,sub_exprsII)] : 
         var ord = new stx.assert.query.ord.QFilter().comply(filterI,filterII);
         if(ord.is_not_less_than()){

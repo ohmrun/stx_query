@@ -17,12 +17,6 @@ class QExpr<T> extends EqCls<TQExpr<T>>{
         comply(lI,lII) && comply(rI,rII);
       case [QENot(eI),QENot(eII)]            : 
         comply(eI,eII);
-      case [QEOf(keyI,restI),QEOf(keyII,restII)] : 
-        var eq = Eq.String().comply(keyI,keyII);
-        if(eq.is_ok()){
-          eq = comply(restI,restII);
-        }
-        eq;
       case [QEIn(filterI,exprI,sub_exprsI),QEIn(filterII,exprII,sub_exprsII)] : 
         var eq = new stx.assert.query.eq.QFilter().comply(filterI,filterII);
         if(eq.is_ok()){

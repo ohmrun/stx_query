@@ -18,7 +18,7 @@
       }
     },
     "test" : {
-      "--resource"  : ["asset/value.pml@value"],
+      "--resource"  : ["asset/value.edn@value"],
       "-L"          : ["stx_test","stx_show"],
       "-cp"         : "src/test/haxe",
       "-main"       : "stx.query.term.object.Test",

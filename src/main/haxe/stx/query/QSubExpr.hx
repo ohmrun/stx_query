@@ -19,7 +19,6 @@ enum QSubExprSum<T>{
 	QSOr(l:QSubExpr<T>,r:QSubExpr<T>);
 	QSNot(e:QSubExpr<T>);
 
-  QSOf(key:String,expr:QSubExpr<T>);
   QSIn(filter:QFilter,q:QSubExpr<T>,e:QSubExpr<T>);
 
 	QSBinop(op:QBinop,l:QSubExpr<T>);
@@ -50,7 +49,6 @@ class QSubExprLift{
 			case QSAnd(l, r) 										      : '${f(l)} && ${f(r)}';
 			case QSOr(l, r) 										      : '${f(l)} || ${f(r)}';
 			case QSNot(e) 											      : '!${f(e)}';
-			case QSOf(key, expr) 								      : '${f(expr)}.${key}';
 			case QSIn(UNIVERSAL, expr, sub_exprs) 		: 'all ${f(expr)} ${f(sub_exprs)}';
 			case QSIn(EXISTENTIAL, expr, sub_exprs) 	: 'any ${f(expr)} ${f(sub_exprs)}';
 			case QSBinop(op, l) 							        : '${op.toString()} ${f(l)}';

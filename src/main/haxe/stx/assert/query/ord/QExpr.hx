@@ -13,12 +13,6 @@ class QExpr<T> extends OrdCls<TQExpr<T>>{
       case [QEAnd(lI,rI),QEAnd(lII,rII)]          : comply(lI,lII) && comply(rI,rII);
       case [QEOr(lI,rI),QEOr(lII,rII)]            : comply(lI,lII) && comply(rI,rII);
       case [QENot(eI),QENot(eII)]                 : comply(eI,eII);
-      case [QEOf(keyI,restI),QEOf(keyII,restII)]  : 
-        var ord = Ord.String().comply(keyI,keyII);
-        if(ord.is_ok()){
-          ord = comply(restI,restII);
-        }
-        ord;
       case [QEIn(filterI,exprI,sub_exprsI),QEIn(filterII,exprII,sub_exprsII)] : 
         var ord = new stx.assert.query.ord.QFilter().comply(filterI,filterII);
         if(ord.is_not_less_than()){

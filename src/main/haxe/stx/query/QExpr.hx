@@ -13,9 +13,6 @@ class QExprCtr extends Clazz {
 	public function LtEq<T>(self:QExpr<T>, that:QExpr<T>):QExpr<T> { return lift(QEBinop(LTEQ, self, that)); }
 	public function Like<T>(self:QExpr<T>, that:QExpr<T>):QExpr<T> { return lift(QEBinop(LIKE, self,that));}
 
-	public function Of<T>(key:String, expr:CTR<QExprCtr, QExpr<T>>):QExpr<T> {
-		return lift(QEOf(key, expr.apply(this)));
-	}
 	public function In<T>(filter:CTR<QExprCtr, QFilter>, expr:CTR<QExprCtr, QExpr<T>>,sub:CTR<QSubExprCtr, QSubExpr<T>>) {
 		return lift(QEIn(filter.apply(this), expr.apply(this), sub.apply(new QSubExprCtr())));
 	}
@@ -31,7 +28,6 @@ enum QExprSum<T = haxe.ds.Option<stx.pico.Nada>> {
 	QEOr(l:QExpr<T>, r:QExpr<T>);
 	QENot(e:QExpr<T>);
 
-	QEOf(key:String, expr:QExpr<T>);
 	QEIn(filter:QFilter, e:QExpr<T>, sub:QSubExpr<T>);
 	QEBinop(op:QBinop, l:QExpr<T>,r:QExpr<T>);
 	QEUnop(op:QUnop, e:QExpr<T>);
@@ -79,11 +75,6 @@ abstract QExpr<T = haxe.ds.Option<stx.pico.Nada>>(QExprSum<T>) from QExprSum<T> 
 	public function or(that:QExpr<T>) {
 		return lift(QEOr(this, that));
 	}	
-
-	@:op(A.B)
-	public function dot(that:String){
-		return lift(QEOf(that, this));
-	}
 }
 
 class QExprLift {
@@ -96,29 +87,10 @@ class QExprLift {
 			case QEAnd(l, r) 													: '${f(l)} && ${f(r)}';
 			case QEOr(l, r) 													: '${f(l)} || ${f(r)}';
 			case QENot(e) 														: '!${f(e)}';
-			case QEOf(key, expr) 											: '${f(expr)}.${key}';
 			case QEIn(UNIVERSAL, expr, sub_exprs) 		: 'all ${f(expr)} ${fI(sub_exprs)}';
 			case QEIn(EXISTENTIAL, expr, sub_exprs) 	: 'any ${f(expr)} ${fI(sub_exprs)}';
 			case QEBinop(op, l, r) 										: '${f(l)} ${op.toString()} ${f(r)}';
 			case QEUnop(EXISTS,e) 										: 'exists ${f(e)}';
 		}
 	}
-	// static public function apply<T>(self:QExpr<T>,val:T,api:QueryApi<T>):Upshot<QResult,QueryFailure>{
-	// 	final f = apply.bind(_,api);
-	// 	return switch(self){
-	// 		case QVal(v) 									: __.accept(QTrue);//TODO: is this right?
-	// 		case QUpshot(result)							: __.accept(result);
-	// 		case QAnd(l,r) 								: f(l).zip(f(r)).map(__.decouple((l,r)-> l && r));
-	// 		case QOr(l,r)									: f(l).zip(f(r)).map(__.decouple((l,r)-> l || r));
-	// 		case QNot(e)									: f(e).map(x -> !x);
-	// 		case QIn(filter,arg,sub_expr) :
-	// 		case QBinop(EQ,l,r)						: __.accept(api.eq().comply(l,r).ok());
-	// 		case QBinop(NEQ,l,r)					: __.accept(!api.eq().comply(l,r).ok());
-	// 		case QBinop(LT,l,r)						: __.accept(api.lt().comply(l,r).ok());
-	// 		case QBinop(LTEQ,l,r)					: __.accept(api.lt().comply(l,r).ok() || api.eq().comply(l,r).ok());
-	// 		case QBinop(GT,l,r)						: __.accept(api.lt().comply(r,l).ok());
-	// 		case QBinop(GTEQ,l,r)					: __.accept(api.lt().comply(r,l).ok() || api.eq().comply(r,l).ok());
-	// 		case QUnop(op,v) 							: __.accept(api.assess().apply(v));
-	// 	}
-	// }
 }
