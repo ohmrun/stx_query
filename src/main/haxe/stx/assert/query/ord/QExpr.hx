@@ -9,7 +9,7 @@ class QExpr<T> extends OrdCls<TQExpr<T>>{
   }
   public function comply(lhs:TQExpr<T>,rhs:TQExpr<T>):Ordered{
     return switch([lhs,rhs]){
-      case [QEVal(l),QEVal(r)]                    : new stx.assert.query.ord.QVal(inner).comply(l,r);
+      case [QEVal(l),QEVal(r)]                    : inner.comply(l,r);
       case [QEAnd(lI,rI),QEAnd(lII,rII)]          : comply(lI,lII) && comply(rI,rII);
       case [QEOr(lI,rI),QEOr(lII,rII)]            : comply(lI,lII) && comply(rI,rII);
       case [QENot(eI),QENot(eII)]                 : comply(eI,eII);

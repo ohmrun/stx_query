@@ -10,7 +10,7 @@ class QExpr<T> extends EqCls<TQExpr<T>>{
   public function comply(lhs:TQExpr<T>,rhs:TQExpr<T>):Equaled{
     return switch([lhs,rhs]){
       case [QEVal(l),QEVal(r)]               : 
-        new stx.assert.query.eq.QVal(inner).comply(l,r);
+        inner.comply(l,r);
       case [QEAnd(lI,rI),QEAnd(lII,rII)]     : 
         comply(lI,lII) && comply(rI,rII);
       case [QEOr(lI,rI),QEOr(lII,rII)]       : 

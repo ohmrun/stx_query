@@ -3,7 +3,7 @@ package stx.query;
 class QExprCtr extends Clazz {
 	@:noUsing static public function lift<T>(self:QExprSum<T>):QExpr<T> return QExpr.lift(self);
 
-	public function Val<T>(v:QVal<T>){ return lift(QEVal(v)); }
+	public function Val<T>(v:T){ return lift(QEVal(v)); }
 	public function Id<T>():QExpr<T>{ return lift(QEIdx); }
 	public function Eq<T>(self:QExpr<T>, that:QExpr<T>):QExpr<T> { return lift(QEBinop(EQ, self,that)); }
 	public function Neq<T>(self:QExpr<T>, that:QExpr<T>):QExpr<T> { return lift(QEBinop(NEQ, self, that));}
@@ -23,7 +23,7 @@ class QExprCtr extends Clazz {
 
 enum QExprSum<T = haxe.ds.Option<stx.pico.Nada>> {
 	QEIdx;
-	QEVal(v:QVal<T>);
+	QEVal(v:T);
 	QEAnd(l:QExpr<T>, r:QExpr<T>);
 	QEOr(l:QExpr<T>, r:QExpr<T>);
 	QENot(e:QExpr<T>);
@@ -37,8 +37,8 @@ enum QExprSum<T = haxe.ds.Option<stx.pico.Nada>> {
 abstract QExpr<T = haxe.ds.Option<stx.pico.Nada>>(QExprSum<T>) from QExprSum<T> to QExprSum<T> {
 	static public var _(default, never) = QExprLift;
 
-	public var value(get,never):Option<QVal<T>>;
-	private function get_value():Option<QVal<T>>{
+	public var value(get,never):Option<T>;
+	private function get_value():Option<T>{
 		return switch(this){
 			case QEVal(v) : __.option(v);
 			default 			: __.option();
@@ -83,7 +83,7 @@ class QExprLift {
 		final fI  = QSubExpr._.toStringWith.bind(_,fn);
 		return switch(self){
 			case QEIdx 																: '_';
-			case QEVal(v)	 														: QVal._.toString_with(v,fn);
+			case QEVal(v)	 														: '$v';
 			case QEAnd(l, r) 													: '${f(l)} && ${f(r)}';
 			case QEOr(l, r) 													: '${f(l)} || ${f(r)}';
 			case QENot(e) 														: '!${f(e)}';
