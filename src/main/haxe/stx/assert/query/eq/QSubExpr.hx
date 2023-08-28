@@ -16,7 +16,7 @@ class QSubExpr<T> extends EqCls<TQSubExpr<T>>{
       case [QSBinop(oI,lI),QSBinop(oII,lII)] :
         var eq = new stx.assert.query.eq.QBinop().comply(oI,oII);
         if(eq.is_ok()){
-          eq = comply(lI,lII);
+          eq = inner.comply(lI,lII);
         }
         eq;
       case [QSIn(filterI,exprI,sub_exprsI),QSIn(filterII,exprII,sub_exprsII)] : 

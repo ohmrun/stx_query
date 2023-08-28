@@ -16,7 +16,7 @@ class QExpr<T> extends OrdCls<TQExpr<T>>{
       case [QEIn(filterI,exprI,sub_exprsI),QEIn(filterII,exprII,sub_exprsII)] : 
         var ord = new stx.assert.query.ord.QFilter().comply(filterI,filterII);
         if(ord.is_not_less_than()){
-          ord = new stx.assert.query.ord.QExpr(inner).comply(exprI,exprII);
+          ord = inner.comply(exprI,exprII);
         }
         if(ord.is_not_less_than()){
           ord = new stx.assert.query.ord.QSubExpr(inner).comply(sub_exprsI,sub_exprsII);

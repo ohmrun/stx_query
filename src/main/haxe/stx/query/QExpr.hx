@@ -3,7 +3,7 @@ package stx.query;
 class QExprCtr extends Clazz {
 	@:noUsing static public function lift<T>(self:QExprSum<T>):QExpr<T> return QExpr.lift(self);
 
-	public function Val<T>(v:T){ return lift(QEVal(v)); }
+	//public function Val<T>(v:T){ return lift(QEVal(v)); }
 	public function Id<T>():QExpr<T>{ return lift(QEIdx); }
 	public function Eq<T>(self:QExpr<T>, that:QExpr<T>):QExpr<T> { return lift(QEBinop(EQ, self,that)); }
 	public function Neq<T>(self:QExpr<T>, that:QExpr<T>):QExpr<T> { return lift(QEBinop(NEQ, self, that));}
@@ -17,20 +17,20 @@ class QExprCtr extends Clazz {
 		return lift(QEIn(filter.apply(this), expr.apply(this), sub.apply(new QSubExprCtr())));
 	}
 
-	public function All() { return UNIVERSAL;}
-	public function Any() { return EXISTENTIAL;}
+	public function All() { return UNIVERSAL; }
+	public function Any() { return EXISTENTIAL; }
 }
 
 enum QExprSum<T = haxe.ds.Option<stx.pico.Nada>> {
 	QEIdx;
-	QEVal(v:T);
+	//QEVal(v:T);
 	QEAnd(l:QExpr<T>, r:QExpr<T>);
 	QEOr(l:QExpr<T>, r:QExpr<T>);
 	QENot(e:QExpr<T>);
 
-	QEIn(filter:QFilter, e:QExpr<T>, sub:QSubExpr<T>);
-	QEBinop(op:QBinop, l:QExpr<T>,r:QExpr<T>);
-	QEUnop(op:QUnop, e:QExpr<T>);
+	QEIn(filter:QFilter, e:T, sub:QSubExpr<T>);
+	QEBinop(op:QBinop, l:T,r:T);
+	QEUnop(op:QUnop, e:T);
 }
 
 @:using(stx.query.QExpr.QExprLift)

@@ -9,8 +9,8 @@ class QExpr<T> extends EqCls<TQExpr<T>>{
   }
   public function comply(lhs:TQExpr<T>,rhs:TQExpr<T>):Equaled{
     return switch([lhs,rhs]){
-      case [QEVal(l),QEVal(r)]               : 
-        inner.comply(l,r);
+      // case [QEVal(l),QEVal(r)]               : 
+      //   inner.comply(l,r);
       case [QEAnd(lI,rI),QEAnd(lII,rII)]     : 
         comply(lI,lII) && comply(rI,rII);
       case [QEOr(lI,rI),QEOr(lII,rII)]       : 
@@ -20,7 +20,7 @@ class QExpr<T> extends EqCls<TQExpr<T>>{
       case [QEIn(filterI,exprI,sub_exprsI),QEIn(filterII,exprII,sub_exprsII)] : 
         var eq = new stx.assert.query.eq.QFilter().comply(filterI,filterII);
         if(eq.is_ok()){
-          eq = new stx.assert.query.eq.QExpr(inner).comply(exprI,exprII);
+          eq = inner.comply(exprI,exprII);
         }
         if(eq.is_ok()){
           eq = new stx.assert.query.eq.QSubExpr(inner).comply(sub_exprsI,sub_exprsII);
@@ -29,10 +29,10 @@ class QExpr<T> extends EqCls<TQExpr<T>>{
       case [QEBinop(oI,lI,rI),QEBinop(oII,lII,rII)] :
         var eq = new stx.assert.query.eq.QBinop().comply(oI,oII);
         if(eq.is_ok()){
-          eq = comply(lI,lII);
+          eq = inner.comply(lI,lII);
         }
         if(eq.is_ok()){
-          eq = comply(rI,rII);
+          eq = inner.comply(rI,rII);
         }
         eq;
       case [QEUnop(opI,eI),QEUnop(opII,eII)]        :

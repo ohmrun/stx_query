@@ -19,7 +19,7 @@ class QSubExpr<T> extends OrdCls<TQSubExpr<T>>{
       case [QSBinop(oI,lI),QSBinop(oII,lII)] :
         var ord = new stx.assert.query.ord.QBinop().comply(oI,oII);
         if(ord.is_not_less_than()){
-          ord = comply(lI,lII);
+          ord = inner.comply(lI,lII);
         }
         ord;
       case [QSIn(filterI,exprI,sub_exprsI),QSIn(filterII,exprII,sub_exprsII)] : 
