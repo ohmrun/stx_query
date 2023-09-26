@@ -1,2 +1,2 @@
 unit:
-  hx build unit
+  hb build unit
