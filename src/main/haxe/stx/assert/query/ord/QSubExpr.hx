@@ -22,15 +22,15 @@ class QSubExpr<T> extends OrdCls<TQSubExpr<T>>{
           ord = inner.comply(lI,lII);
         }
         ord;
-      case [QSIn(filterI,exprI,sub_exprsI),QSIn(filterII,exprII,sub_exprsII)] : 
-        var ord = new stx.assert.query.ord.QFilter().comply(filterI,filterII);
-        if(ord.is_not_less_than()){
-          ord = comply(exprI,exprII);
-        }
-        if(ord.is_not_less_than()){
-          ord = new stx.assert.query.ord.QSubExpr(inner).comply(sub_exprsI,sub_exprsII);
-        }
-        ord;
+      // case [QSIn(filterI,exprI,sub_exprsI),QSIn(filterII,exprII,sub_exprsII)] : 
+      //   var ord = new stx.assert.query.ord.QFilter().comply(filterI,filterII);
+      //   if(ord.is_not_less_than()){
+      //     ord = comply(exprI,exprII);
+      //   }
+      //   if(ord.is_not_less_than()){
+      //     ord = new stx.assert.query.ord.QSubExpr(inner).comply(sub_exprsI,sub_exprsII);
+      //   }
+      //   ord;
       case [QSUnop(opI),QSUnop(opII)]        :
         var ord = new stx.assert.query.ord.QUnop().comply(opI,opII);
         ord;

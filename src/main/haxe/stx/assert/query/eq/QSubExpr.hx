@@ -19,15 +19,15 @@ class QSubExpr<T> extends EqCls<TQSubExpr<T>>{
           eq = inner.comply(lI,lII);
         }
         eq;
-      case [QSIn(filterI,exprI,sub_exprsI),QSIn(filterII,exprII,sub_exprsII)] : 
-        var eq = new stx.assert.query.eq.QFilter().comply(filterI,filterII);
-        if(eq.is_ok()){
-          eq = new stx.assert.query.eq.QSubExpr(inner).comply(exprI,exprII);
-        }
-        if(eq.is_ok()){
-          eq = new stx.assert.query.eq.QSubExpr(inner).comply(sub_exprsI,sub_exprsII);
-        }
-        eq;
+      // case [QSIn(filterI,exprI,sub_exprsI),QSIn(filterII,exprII,sub_exprsII)] : 
+      //   var eq = new stx.assert.query.eq.QFilter().comply(filterI,filterII);
+      //   if(eq.is_ok()){
+      //     eq = new stx.assert.query.eq.QSubExpr(inner).comply(exprI,exprII);
+      //   }
+      //   if(eq.is_ok()){
+      //     eq = new stx.assert.query.eq.QSubExpr(inner).comply(sub_exprsI,sub_exprsII);
+      //   }
+      //   eq;
       case [QSUnop(opI),QSUnop(opII)]        :
         new stx.assert.query.eq.QUnop().comply(opI,opII);
       default : Eq.EnumValueIndex().comply(lhs,rhs);

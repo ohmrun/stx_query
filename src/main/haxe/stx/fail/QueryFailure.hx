@@ -7,6 +7,7 @@ enum QueryFailureSum{
 	E_Query_BareValue;
 	E_Query_NullAtIndex(e:stx.query.QExpr<Dynamic>,i:Int);
 	E_Query_NullAtRecord(e:stx.query.QExpr<Dynamic>,str:String);
+	E_Query_Pml(e:PmlFailure);
 }
 abstract QueryFailure(QueryFailureSum) from QueryFailureSum to QueryFailureSum{
 	public function new(self) this = self;
